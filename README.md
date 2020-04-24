@@ -1,1 +1,2 @@
-# univerzita-kona-frontend
+# volunteer-finder-frontend
+

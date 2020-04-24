@@ -1,0 +1,9 @@
+<div *ngFor="let contentType of contentTypes" (click)=setContentType(contentType)>
+  <button>
+    {{'APP.UNIVERZITA-KONA.NAV.' + contentType | translate}}
+  </button>
+</div>
+
+<button (click)=resetState()>
+  {{'APP.UNIVERZITA-KONA.NAV.RESET' | translate}}
+</button>

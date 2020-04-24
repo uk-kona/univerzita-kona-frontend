@@ -1,0 +1,25 @@
+<h2>{{ 'APP.UNIVERZITA-KONA.NAV.HELP-FINANCIALLY' | translate }}</h2>
+
+<form [formGroup]="helpFinanciallyForm" (ngSubmit)="onSubmit()">
+
+  <div>
+    <br>
+    <label for="areSpecialConditions">
+      <input id="areSpecialConditions" type="checkbox" [value]="true" formControlName="areSpecialConditions">
+      {{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-FINANCIALLY.SPECIAL-CONDITIONS' | translate }}
+    </label>
+  </div>
+
+  <br>
+
+  <label for="specialConditions" *ngIf="helpFinanciallyForm.controls.areSpecialConditions.value === true">
+    <textarea id="specialConditions" formControlName="specialConditions"></textarea>
+  </label>
+
+  <br>
+
+  <button type="submit" [disabled]="!helpFinanciallyForm.valid">
+    {{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-FINANCIALLY.GENERATE-PAYMENT-DATA' | translate }}
+  </button>
+
+</form>

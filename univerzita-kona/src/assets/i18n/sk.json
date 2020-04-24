@@ -1,0 +1,27 @@
+{
+  "APP": {
+    "UNIVERZITA-KONA": {
+      "DESCRIPTION": "...Stručný motivačný text s popisom...",
+      "NAV": {
+        "HELP-REQUEST": "Potrebujem pomoc",
+        "HELP-BY-ACTIVITY": "Chcem pomáhať aktivitou",
+        "HELP-FINANCIALLY": "Chcem pomáhať finančne",
+        "RESET": "Zrušiť",
+        "ABOUT": "O nas"
+      },
+      "CONTENT": {
+        "SUBMIT": "Odoslať",
+        "HELP-REQUEST": {
+          "E-MAIL": "Mailový kontakt",
+          "PHONE-NUMBER": "Telefonický kontakt"
+        },
+        "HELP-FINANCIALLY": {
+          "SPECIAL-CONDITIONS": "Pridať špeciálne podmienky pre použitie príspevku",
+          "GENERATE-PAYMENT-DATA": "Generovať údaje pre platbu "
+        }
+      }
+    },
+    "YES": "Áno",
+    "NO": "Nie"
+  }
+}

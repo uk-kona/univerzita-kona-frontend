@@ -1,0 +1,7 @@
+<div *ngIf="contentType">
+  <app-intro *ngIf="contentType === 'INTRO'"></app-intro>
+  <app-help-request *ngIf="contentType === 'HELP-REQUEST'"></app-help-request>
+  <app-help-by-activity *ngIf="contentType === 'HELP-BY-ACTIVITY'"></app-help-by-activity>
+  <app-help-financially *ngIf="contentType === 'HELP-FINANCIALLY'"></app-help-financially>
+  <app-about *ngIf="contentType === 'ABOUT'"></app-about>
+</div>
