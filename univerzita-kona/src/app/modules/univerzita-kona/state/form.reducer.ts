@@ -1,7 +1,7 @@
 import { ContentType } from '../shared/constants/constants';
 import * as fromRoot from '../../../state/app.state';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { FormActions, FormActionTypes } from './product.actions';
+import { FormActions, FormActionTypes } from './form.actions';
 
 export const formsFeatureName = 'forms';
 
@@ -24,7 +24,7 @@ export const getContentType = createSelector(
   state => state.contentType
 );
 
-export function reducer(state: FormState = initialState, action: FormActions) {
+export function formReducer(state: FormState = initialState, action: FormActions) {
 
   switch (action.type) {
     case FormActionTypes.ChangeContentType:

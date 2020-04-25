@@ -1,8 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ContentType } from '../../shared/constants/constants';
 import { Store } from '@ngrx/store';
-import * as formActions from '../../state/product.actions';
-import * as fromForm from '../../state/product.reducer';
+import * as formActions from '../../state/form.actions';
+import * as fromForm from '../../state/form.reducer';
 
 @Component({
   selector: 'app-nav',

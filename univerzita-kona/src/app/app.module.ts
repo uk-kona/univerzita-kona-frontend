@@ -13,8 +13,20 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, ActionReducerMap, State, ActionReducer, MetaReducer } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { AppState } from './state/app.state';
+import { localStorageSync } from 'ngrx-store-localstorage';
+import * as fromForm from './modules/univerzita-kona/state/form.reducer';
+
+const reducers: ActionReducerMap<any> = {
+  forms: fromForm.formReducer
+};
+
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+  return localStorageSync({keys: ['forms'], rehydrate: true})(reducer);
+}
+const metaReducers: MetaReducer<any, any>[] = [localStorageSyncReducer];
 
 @NgModule({
   declarations: [
@@ -40,7 +52,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     UniverzitaKonaModule,
     BrowserAnimationsModule,
 
-    StoreModule.forRoot({}),
+    StoreModule.forRoot(
+      reducers,
+      {metaReducers}
+    ),
     StoreDevtoolsModule.instrument({
       name: 'Univerzita Kona - DevTools',
       maxAge: 25

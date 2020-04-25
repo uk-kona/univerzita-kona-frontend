@@ -15,10 +15,9 @@ import { AboutComponent } from './components/content/about/about.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 
-import { StoreModule } from '@ngrx/store';
-import { reducer, formsFeatureName } from './state/product.reducer';
-
-
+import { StoreModule, ActionReducerMap, ActionReducer, MetaReducer } from '@ngrx/store';
+import { formReducer, formsFeatureName, State } from './state/form.reducer';
+import { localStorageSync } from 'ngrx-store-localstorage';
 
 @NgModule({
   declarations: [
@@ -46,7 +45,7 @@ import { reducer, formsFeatureName } from './state/product.reducer';
     BsDropdownModule.forRoot(),
     NgxIntlTelInputModule,
 
-    StoreModule.forFeature(formsFeatureName, reducer)
+    StoreModule.forFeature(formsFeatureName, formReducer)
   ],
   exports: [
     UniverzitaKonaComponent,
