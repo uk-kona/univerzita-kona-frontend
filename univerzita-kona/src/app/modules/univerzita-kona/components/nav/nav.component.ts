@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ContentType } from '../../shared/constants/constants';
 import { Store } from '@ngrx/store';
 import * as formActions from '../../state/form.actions';

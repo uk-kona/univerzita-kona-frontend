@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import { ContentType } from '../../shared/constants/constants';
-import { Store, select } from '@ngrx/store';
-import * as formActions from '../../state/form.actions';
 import * as fromForm from '../../state/form.reducer';
 
 @Component({

@@ -13,9 +13,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
-import { StoreModule, ActionReducerMap, State, ActionReducer, MetaReducer } from '@ngrx/store';
+import { StoreModule, ActionReducerMap, ActionReducer, MetaReducer } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { AppState } from './state/app.state';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import * as fromForm from './modules/univerzita-kona/state/form.reducer';
 

@@ -15,9 +15,8 @@ import { AboutComponent } from './components/content/about/about.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 
-import { StoreModule, ActionReducerMap, ActionReducer, MetaReducer } from '@ngrx/store';
-import { formReducer, formsFeatureName, State } from './state/form.reducer';
-import { localStorageSync } from 'ngrx-store-localstorage';
+import { StoreModule } from '@ngrx/store';
+import { formReducer, formsFeatureName } from './state/form.reducer';
 
 @NgModule({
   declarations: [
