@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './modules/core/core.module';
 import { UniverzitaKonaModule } from './modules/univerzita-kona/univerzita-kona.module';
 import { HttpLoaderFactory } from './shared/factories/http-loader.factory';
-import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -17,6 +16,8 @@ import { StoreModule, ActionReducerMap, ActionReducer, MetaReducer } from '@ngrx
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import * as fromForm from './modules/univerzita-kona/state/form.reducer';
+import { NgrxFormsModule } from 'ngrx-forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 const reducers: ActionReducerMap<any> = {
   forms: fromForm.formReducer
@@ -44,13 +45,12 @@ const metaReducers: MetaReducer<any, any>[] = [localStorageSyncReducer];
       defaultLanguage: 'sk',
     }),
     ReactiveFormsModule,
+    FormsModule,
+
     BsDropdownModule.forRoot(),
     NgxIntlTelInputModule,
 
-    CoreModule,
-    UniverzitaKonaModule,
     BrowserAnimationsModule,
-
     StoreModule.forRoot(
       reducers,
       {metaReducers}
@@ -59,6 +59,10 @@ const metaReducers: MetaReducer<any, any>[] = [localStorageSyncReducer];
       name: 'Univerzita Kona - DevTools',
       maxAge: 25
     }),
+    NgrxFormsModule,
+
+    CoreModule,
+    UniverzitaKonaModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,18 +1,18 @@
 <h2>{{ 'APP.UNIVERZITA-KONA.NAV.HELP-REQUEST' | translate }}</h2>
 
-<form [formGroup]="helpRequestForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="helpRequestForm" [ngrxFormState]="(formState$ | async)">
 
   <label for="email">
     {{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-REQUEST.E-MAIL' | translate }}
-    <input id="email" type="email" formControlName="email">
-    <p *ngIf="helpRequestForm.get('email').invalid && helpRequestForm.get('email').touched" class="invalid">
+    <input id="email" type="email" [ngrxFormControlState]="(formState$ | async).controls.email">
+    <p *ngIf="(formState$ | async).controls.email.isInvalid && (formState$ | async).controls.email.isTouched" class="invalid">
       {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
     </p>
   </label>
 
   <br>
 
-  <label for="phone-number">
+  <!-- <label for="phone-number">
     {{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-REQUEST.PHONE-NUMBER' | translate }}
     <ngx-intl-tel-input 
       [preferredCountries]="intTelInputSetup.preferredCountries"
@@ -29,21 +29,13 @@
       name="phone" 
       formControlName="phoneNumber">
     </ngx-intl-tel-input>
-    <p *ngIf="helpRequestForm.get('phoneNumber').invalid && helpRequestForm.get('phoneNumber').touched" class="invalid">
-      {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
-    </p>
-  </label>
-
-  <!-- <label for="phone-number-backup">
-    {{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-REQUEST.PHONE-NUMBER' | translate }}
-    <input id="phone-number-backup" type="text" formControlName="phoneNumberBackup">
-    <p *ngIf="helpRequestForm.get('phoneNumberBackup').invalid && helpRequestForm.get('phoneNumberBackup').touched" class="invalid">
+    <p *ngIf="(formState$ | async).controls.phoneNumber.isInvalid && (formState$ | async).controls.phoneNumber.isTouched" class="invalid">
       {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
     </p>
   </label> -->
 
   <br>
 
-  <button type="submit" [disabled]="!helpRequestForm.valid">{{'SUBMIT' | translate}}</button>
+  <button type="submit" [disabled]="!(formState$ | async).isValid">{{'SUBMIT' | translate}}</button>
 
 </form>
