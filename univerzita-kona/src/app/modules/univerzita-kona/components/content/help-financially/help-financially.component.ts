@@ -1,40 +1,22 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { FormGroupState } from 'ngrx-forms';
+import { HelpFinanciallyFormValue, State } from '../../../state/form.reducer';
 
 @Component({
   selector: 'app-help-financially',
   templateUrl: './help-financially.component.html',
   styleUrls: ['./help-financially.component.scss']
 })
-export class HelpFinanciallyComponent implements OnInit {
+export class HelpFinanciallyComponent {
 
-  helpFinanciallyForm: FormGroup;
+  formState$: Observable<FormGroupState<HelpFinanciallyFormValue>>;
 
-  constructor() {
-    this.createForm();
-    this.listenToFormChange();
-  }
-
-  ngOnInit(): void {
-  }
-
-  private createForm(): void {
-    this.helpFinanciallyForm = new FormGroup({
-      areSpecialConditions: new FormControl(false),
-      specialConditions: new FormControl('')
-    });
-  }
-
-  private listenToFormChange(): void {
-    this.helpFinanciallyForm.controls.areSpecialConditions.valueChanges.subscribe((value: boolean) => {
-      if (value) {
-        this.helpFinanciallyForm.controls.specialConditions.setValidators([Validators.required]);
-        this.helpFinanciallyForm.controls.specialConditions.updateValueAndValidity();
-      } else {
-        this.helpFinanciallyForm.controls.specialConditions.setValidators([]);
-        this.helpFinanciallyForm.controls.specialConditions.updateValueAndValidity();
-      }
-    });
+  constructor(
+    private store: Store<State>
+  ) {
+    this.formState$ = this.store.select(s => s.forms.helpFinanciallyForm);
   }
 
   onSubmit(): void {

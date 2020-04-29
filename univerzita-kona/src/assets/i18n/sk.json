@@ -16,7 +16,8 @@
           "PHONE-NUMBER": "Telefonický kontakt"
         },
         "HELP-FINANCIALLY": {
-          "SPECIAL-CONDITIONS": "Pridať špeciálne podmienky pre použitie príspevku",
+          "ADD-SPECIAL-CONDITIONS": "Pridať špeciálne podmienky pre použitie príspevku",
+          "SPECIAL-CONDITIONS": "Špeciálne podmienky",
           "GENERATE-PAYMENT-DATA": "Generovať údaje pre platbu "
         }
       }

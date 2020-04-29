@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup, FormControl } from '@angular/forms';
 import { IntTelInputSetup } from '../../../shared/models/int-tel-input-setup.model';
+import { Store } from '@ngrx/store';
+import { HelpRequestFormValue, State } from '../../../state/form.reducer';
+import { FormGroupState } from 'ngrx-forms';
+import { Observable } from 'rxjs';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { SetHelpRequestFormPhoneNumberValue } from '../../../state/form.actions';
 
 @Component({
   selector: 'app-help-request',
@@ -9,56 +14,37 @@ import { IntTelInputSetup } from '../../../shared/models/int-tel-input-setup.mod
 })
 export class HelpRequestComponent implements OnInit {
 
-  helpRequestForm: FormGroup;
+  formState$: Observable<FormGroupState<HelpRequestFormValue>>;
 
   intTelInputSetup = new IntTelInputSetup();
 
+  helpRequestForm: FormGroup;
+
   constructor(
-    private formBuilder: FormBuilder
-  ) { }
+    private store: Store<State>,
+    private formBuilder: FormBuilder,
+  ) {
+    this.formState$ = this.store.select(s => s.forms.helpRequestForm);
+  }
+
+  // TODO | complete phone number form
 
   ngOnInit(): void {
     this.createForm();
-    this.addDropdownPhoneNumberForm();
-    // this.addSimlePhoneNumberForm(); /* backup simple phone number input */
+    // this.helpRequestForm.valueChanges.subscribe(value => {
+    //   console.log(value);
+    //   this.store.dispatch(new SetHelpRequestFormPhoneNumberValue(value));
+    // });
   }
 
   private createForm(): void {
     this.helpRequestForm = this.formBuilder.group({
-      email: [
-        '',
-        Validators.compose([
-          Validators.required,
-          Validators.email,
-          Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$')
-        ])
-      ],
+      // phoneNumber: ['', Validators.required],
     });
-  }
-
-  private addDropdownPhoneNumberForm(): void {
-    this.helpRequestForm.addControl(
-      'phoneNumber',
-      new FormControl('', Validators.required)
-    );
-  }
-
-  private addSimlePhoneNumberForm(): void {
-    this.helpRequestForm.addControl(
-      'phoneNumberBackup',
-      new FormControl(
-        '',
-        Validators.compose([
-          Validators.required,
-          Validators.pattern('^[\+]?[0-9]*$'),
-        ])
-      )
-    );
   }
 
   onSubmit(): void {
     console.log('SUBMIT');
-    console.log(this.helpRequestForm);
   }
 
 }

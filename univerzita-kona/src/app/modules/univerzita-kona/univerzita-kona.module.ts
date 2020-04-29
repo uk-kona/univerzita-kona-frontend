@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ContentComponent } from './components/content/content.component';
 import { NavComponent } from './components/nav/nav.component';
@@ -9,16 +9,16 @@ import { HttpLoaderFactory } from 'src/app/shared/factories/http-loader.factory'
 import { HelpRequestComponent } from './components/content/help-request/help-request.component';
 import { HelpFinanciallyComponent } from './components/content/help-financially/help-financially.component';
 import { HelpByActivityComponent } from './components/content/help-by-activity/help-by-activity.component';
-import { ReactiveFormsModule } from '@angular/forms';
 import { IntroComponent } from './components/content/intro/intro.component';
 import { AboutComponent } from './components/content/about/about.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 
 import { StoreModule } from '@ngrx/store';
-import { reducer, formsFeatureName } from './state/product.reducer';
-
-
+import { formReducer } from './state/form.reducer';
+import { NgrxFormsModule } from 'ngrx-forms';
+import { formsFeatureName } from './state/form.selector';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,13 +43,18 @@ import { reducer, formsFeatureName } from './state/product.reducer';
       defaultLanguage: 'sk',
     }),
     ReactiveFormsModule,
+    FormsModule,
     BsDropdownModule.forRoot(),
     NgxIntlTelInputModule,
 
-    StoreModule.forFeature(formsFeatureName, reducer)
+    StoreModule.forFeature(formsFeatureName, formReducer),
+    NgrxFormsModule,
   ],
   exports: [
     UniverzitaKonaComponent,
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA,
   ],
 })
 export class UniverzitaKonaModule { }

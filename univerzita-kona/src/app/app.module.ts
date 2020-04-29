@@ -8,13 +8,25 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './modules/core/core.module';
 import { UniverzitaKonaModule } from './modules/univerzita-kona/univerzita-kona.module';
 import { HttpLoaderFactory } from './shared/factories/http-loader.factory';
-import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, ActionReducerMap, ActionReducer, MetaReducer } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { localStorageSync } from 'ngrx-store-localstorage';
+import * as fromForm from './modules/univerzita-kona/state/form.reducer';
+import { NgrxFormsModule } from 'ngrx-forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+
+const reducers: ActionReducerMap<any> = {
+  forms: fromForm.formReducer
+};
+
+export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+  return localStorageSync({keys: ['forms'], rehydrate: true})(reducer);
+}
+const metaReducers: MetaReducer<any, any>[] = [localStorageSyncReducer];
 
 @NgModule({
   declarations: [
@@ -33,18 +45,24 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
       defaultLanguage: 'sk',
     }),
     ReactiveFormsModule,
+    FormsModule,
+
     BsDropdownModule.forRoot(),
     NgxIntlTelInputModule,
 
-    CoreModule,
-    UniverzitaKonaModule,
     BrowserAnimationsModule,
-
-    StoreModule.forRoot({}),
+    StoreModule.forRoot(
+      reducers,
+      {metaReducers}
+    ),
     StoreDevtoolsModule.instrument({
       name: 'Univerzita Kona - DevTools',
       maxAge: 25
     }),
+    NgrxFormsModule,
+
+    CoreModule,
+    UniverzitaKonaModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

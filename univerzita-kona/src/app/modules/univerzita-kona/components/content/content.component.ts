@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import { ContentType } from '../../shared/constants/constants';
-import { Store, select } from '@ngrx/store';
-import * as formActions from '../../state/product.actions';
-import * as fromForm from '../../state/product.reducer';
+import * as fromForm from '../../state/form.reducer';
+import * as fromFormSelector from '../../state/form.selector';
 
 @Component({
   selector: 'app-content',
@@ -18,17 +18,9 @@ export class ContentComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.store.pipe(select(fromForm.getContentType)).subscribe(
+    this.store.pipe(select(fromFormSelector.getContentType)).subscribe(
       ct => this.contentType = ct
     );
-    // this.store.pipe(select('forms')).subscribe(
-    //   forms => {
-    //     if (forms) {
-    //       console.log(forms.contentType);
-    //       this.contentType = forms.contentType;
-    //     }
-    //   });
-
   }
 
 }
