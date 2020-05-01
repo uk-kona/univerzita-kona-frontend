@@ -11,14 +11,11 @@ import { HelpFinanciallyComponent } from './components/content/help-financially/
 import { HelpByActivityComponent } from './components/content/help-by-activity/help-by-activity.component';
 import { IntroComponent } from './components/content/intro/intro.component';
 import { AboutComponent } from './components/content/about/about.component';
-import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { NgxIntlTelInputModule } from 'ngx-intl-tel-input';
 
 import { StoreModule } from '@ngrx/store';
 import { formReducer } from './state/form.reducer';
 import { NgrxFormsModule } from 'ngrx-forms';
 import { formsFeatureName } from './state/form.selector';
-import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -42,10 +39,6 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
       },
       defaultLanguage: 'sk',
     }),
-    ReactiveFormsModule,
-    FormsModule,
-    BsDropdownModule.forRoot(),
-    NgxIntlTelInputModule,
 
     StoreModule.forFeature(formsFeatureName, formReducer),
     NgrxFormsModule,

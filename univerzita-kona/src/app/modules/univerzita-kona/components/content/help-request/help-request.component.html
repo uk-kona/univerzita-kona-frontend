@@ -1,6 +1,6 @@
 <h2>{{ 'APP.UNIVERZITA-KONA.NAV.HELP-REQUEST' | translate }}</h2>
 
-<form [formGroup]="helpRequestForm" [ngrxFormState]="(formState$ | async)">
+<form [ngrxFormState]="(formState$ | async)">
 
   <label for="email">
     {{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-REQUEST.E-MAIL' | translate }}
@@ -12,27 +12,13 @@
 
   <br>
 
-  <!-- <label for="phone-number">
+  <label for="phone-number">
     {{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-REQUEST.PHONE-NUMBER' | translate }}
-    <ngx-intl-tel-input 
-      [preferredCountries]="intTelInputSetup.preferredCountries"
-      [enableAutoCountrySelect]="true" 
-      [enablePlaceholder]="true" 
-      [searchCountryFlag]="true"
-      [searchCountryField]="intTelInputSetup.searchCountryField"
-      [selectFirstCountry]="false" 
-      [selectedCountryISO]="intTelInputSetup.selectedCountryISO"
-      [maxLength]="15" 
-      [tooltipField]="intTelInputSetup.tooltipField" 
-      [phoneValidation]="true" 
-      [separateDialCode]="true"
-      name="phone" 
-      formControlName="phoneNumber">
-    </ngx-intl-tel-input>
+    <input id="phone-number" type="tel" [ngrxFormControlState]="(formState$ | async).controls.phoneNumber">
     <p *ngIf="(formState$ | async).controls.phoneNumber.isInvalid && (formState$ | async).controls.phoneNumber.isTouched" class="invalid">
       {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
     </p>
-  </label> -->
+  </label>
 
   <br>
 
