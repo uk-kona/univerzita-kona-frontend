@@ -2,7 +2,7 @@ import { ContentType } from '../shared/constants/constants';
 import * as fromRoot from '../../../state/app.state';
 import { FormActions, FormActionTypes } from './form.actions';
 import { createFormGroupState, FormGroupState, formGroupReducer, updateGroup, validate } from 'ngrx-forms';
-import { required, pattern } from 'ngrx-forms/validation';
+import { required, pattern, number } from 'ngrx-forms/validation';
 
 export interface State extends fromRoot.AppState {
   forms: FormState;
@@ -29,7 +29,7 @@ export interface HelpRequestFormValue {
 
 const validateHelpRequestForm = updateGroup<HelpRequestFormValue>({
   email: validate(required, pattern(RegExp('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$'))),
-  phoneNumber: validate(required),
+  phoneNumber: validate(required, pattern(RegExp('^\\+?[0-9 ]+$'))),
 });
 
 export interface FormState {
@@ -82,6 +82,7 @@ export function formReducer(state: FormState = initialState, action: FormActions
       helpFinanciallyForm
     };
   }
+
   const helpRequestForm = validateHelpRequestForm(formGroupReducer(state.helpRequestForm, action));
   if (helpRequestForm !== state.helpRequestForm) {
     state = {
