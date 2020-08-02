@@ -18,7 +18,8 @@
         "HELP-FINANCIALLY": {
           "ADD-SPECIAL-CONDITIONS": "Pridať špeciálne podmienky pre použitie príspevku",
           "SPECIAL-CONDITIONS": "Špeciálne podmienky",
-          "GENERATE-PAYMENT-DATA": "Generovať údaje pre platbu "
+          "GENERATE-PAYMENT-DATA": "Generovať údaje pre platbu",
+          "PAYMENT-DATA-RESPONSE": "Údaje pre platbu"
         }
       }
     },
