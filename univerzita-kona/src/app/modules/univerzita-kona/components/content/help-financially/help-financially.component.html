@@ -19,8 +19,11 @@
 
   <br>
 
-  <button type="submit" [disabled]="!(formState$ | async).isValid">
+  <button type="submit" [disabled]="!(formState$ | async).isValid" (click)="generatePaymentData()">
     {{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-FINANCIALLY.GENERATE-PAYMENT-DATA' | translate }}
   </button>
+  <p *ngIf="response$">
+    {{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-FINANCIALLY.PAYMENT-DATA-RESPONSE' | translate }}: {{ response$ | async | json }}
+  </p>
 
 </form>
