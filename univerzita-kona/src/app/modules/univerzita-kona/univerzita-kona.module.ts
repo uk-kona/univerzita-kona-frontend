@@ -16,7 +16,7 @@ import { StoreModule } from '@ngrx/store';
 import { formReducer } from './state/form.reducer';
 import { NgrxFormsModule } from 'ngrx-forms';
 import { formsFeatureName } from './state/form.selector';
-import { GenerateDataService } from './services/generate-data.service';
+import { GeneralService } from './services/general.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +48,7 @@ import { GenerateDataService } from './services/generate-data.service';
     UniverzitaKonaComponent,
   ],
   providers: [
-    GenerateDataService,
+    GeneralService,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,
