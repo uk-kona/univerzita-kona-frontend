@@ -1,1 +1,1 @@
-export type ContentType = 'INTRO' | 'HELP-REQUEST' | 'HELP-BY-ACTIVITY' | 'HELP-FINANCIALLY' | 'ABOUT';
+export type ContentType = 'INTRO' | 'HELP-REQUEST' | 'HELP-WITH-ACTIVITY' | 'HELP-FINANCIALLY' | 'ABOUT';

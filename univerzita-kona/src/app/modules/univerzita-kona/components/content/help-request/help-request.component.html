@@ -1,26 +1,105 @@
 <h2>{{ 'APP.UNIVERZITA-KONA.NAV.HELP-REQUEST' | translate }}</h2>
 
-<form [ngrxFormState]="(formState$ | async)">
+<form [ngrxFormState]="(formState$ | async)" (ngSubmit)="onSubmit()">
 
-  <label for="email">
-    {{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-REQUEST.E-MAIL' | translate }}
-    <input id="email" type="email" [ngrxFormControlState]="(formState$ | async).controls.email">
-    <p *ngIf="(formState$ | async).controls.email.isInvalid && (formState$ | async).controls.email.isTouched" class="invalid">
-      {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
-    </p>
-  </label>
+  <div>
+    <label for="name-surname">
+      {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.NAME-SURNAME' | translate }}
+      <input id="name-surname" type="text" [ngrxFormControlState]="(formState$ | async).controls.nameSurname" autocomplete="name">
+      <p *ngIf="(formState$ | async).controls.nameSurname.isInvalid && (formState$ | async).controls.nameSurname.isTouched" class="invalid">
+        {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+      </p>
+    </label>
+  </div>
 
-  <br>
+  <fieldset>
+    <legend>{{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.RESIDENTIAL-ADDRESS' | translate }}</legend>
 
-  <label for="phone-number">
-    {{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-REQUEST.PHONE-NUMBER' | translate }}
-    <input id="phone-number" type="tel" [ngrxFormControlState]="(formState$ | async).controls.phoneNumber">
-    <p *ngIf="(formState$ | async).controls.phoneNumber.isInvalid && (formState$ | async).controls.phoneNumber.isTouched" class="invalid">
-      {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
-    </p>
-  </label>
+    <div>
+        <label for="residential-street-address">
+          {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.STREET-ADDRESS' | translate }}
+          <input id="residential-street-address" type="text" [ngrxFormControlState]="(formState$ | async).controls.residentialStreetAddress" autocomplete="street-address">
+          <p *ngIf="(formState$ | async).controls.residentialStreetAddress.isInvalid && (formState$ | async).controls.residentialStreetAddress.isTouched" class="invalid">
+            {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+          </p>
+        </label>
+      </div>
+    
+      <div>
+        <label for="residential-zip-code">
+          {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.ZIP-CODE' | translate }}
+          <input id="residential-zip-code" type="text" [ngrxFormControlState]="(formState$ | async).controls.residentialZipCode" autocomplete="postal-code">
+          <p *ngIf="(formState$ | async).controls.residentialZipCode.isInvalid && (formState$ | async).controls.residentialZipCode.isTouched" class="invalid">
+            {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+          </p>
+        </label>
+      </div>
+    
+      <div>
+        <label for="residential-city">
+          {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.CITY' | translate }}
+          <input id="residential-city" type="text" [ngrxFormControlState]="(formState$ | async).controls.residentialCity">
+          <p *ngIf="(formState$ | async).controls.residentialCity.isInvalid && (formState$ | async).controls.residentialCity.isTouched" class="invalid">
+            {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+          </p>
+        </label>
+      </div>
+      
+      <div>
+        <label for="residential-country">
+          {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.COUNTRY' | translate }}
+          <input id="country" type="text" [ngrxFormControlState]="(formState$ | async).controls.residentialCountry">
+          <p *ngIf="(formState$ | async).controls.residentialCountry.isInvalid && (formState$ | async).controls.residentialCountry.isTouched" class="invalid">
+            {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+          </p>
+        </label>
+      </div>
 
-  <br>
+  </fieldset>
+
+  
+  <fieldset>
+    <legend>{{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-REQUEST.HELP-ACTIVITY' | translate }}</legend>
+
+    <div>
+      <label for="help-activity">
+        {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.ACTIVITY-SELECTION' | translate }}
+        <select id="help-activity" [ngrxFormControlState]="(formState$ | async).controls.helpActivity">
+          <option *ngFor="let activity of (helpActivities$ | async)" [value]="activity">
+            {{ activity.name }}
+          </option>
+        </select>
+        <p *ngIf="(formState$ | async).controls.helpActivity.isInvalid && (formState$ | async).controls.helpActivity.isTouched" class="invalid">
+          {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+        </p>
+      </label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>{{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.CONTACT' | translate }}</legend>
+
+    <div>
+      <label for="phone-number">
+        {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.PHONE-NUMBER' | translate }}
+        <input id="phone-number" type="tel" [ngrxFormControlState]="(formState$ | async).controls.phoneNumber">
+        <p *ngIf="(formState$ | async).controls.phoneNumber.isInvalid && (formState$ | async).controls.phoneNumber.isTouched" class="invalid">
+          {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+        </p>
+      </label>
+    </div>
+
+    <div>
+      <label for="email">
+        {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.E-MAIL' | translate }}
+        <input id="email" type="email" [ngrxFormControlState]="(formState$ | async).controls.email">
+        <p *ngIf="(formState$ | async).controls.email.isInvalid && (formState$ | async).controls.email.isTouched" class="invalid">
+          {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+        </p>
+      </label>
+    </div>
+
+  </fieldset>
 
   <button type="submit" [disabled]="!(formState$ | async).isValid">{{'SUBMIT' | translate}}</button>
 

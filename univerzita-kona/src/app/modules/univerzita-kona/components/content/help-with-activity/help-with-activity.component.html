@@ -1,0 +1,182 @@
+<h2>{{ 'APP.UNIVERZITA-KONA.NAV.HELP-WITH-ACTIVITY' | translate }}</h2>
+
+<form [ngrxFormState]="(formState$ | async)" (ngSubmit)="onSubmit()">
+    
+  <div>
+    <label for="name-surname">
+      {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.NAME-SURNAME' | translate }}
+      <input id="name-surname" type="text" [ngrxFormControlState]="(formState$ | async).controls.nameSurname" autocomplete="name">
+      <p *ngIf="(formState$ | async).controls.nameSurname.isInvalid && (formState$ | async).controls.nameSurname.isTouched" class="invalid">
+        {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+      </p>
+    </label>
+  </div>
+  
+  <div>
+    <label for="birthDate">
+      {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.BIRTH-DATE' | translate }}*
+      <input id="birthDate" type="date" [ngrxFormControlState]="(formState$ | async).controls.birthDate">
+      <p *ngIf="(formState$ | async).controls.birthDate.isInvalid && (formState$ | async).controls.birthDate.isTouched" class="invalid">
+        {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+      </p>
+    </label>
+  </div>
+  
+  <div>
+    <label for="faculty">
+      {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.FACULTY' | translate }}
+      <select id="faculty" [ngrxFormControlState]="(formState$ | async).controls.faculty">
+        <option *ngFor="let faculty of (faculties$ | async)" [value]="faculty">
+          {{ faculty.name }}
+        </option>
+      </select>
+      <p *ngIf="(formState$ | async).controls.faculty.isInvalid && (formState$ | async).controls.faculty.isTouched" class="invalid">
+        {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+      </p>
+    </label>
+  </div>
+
+  <fieldset>
+    <legend>{{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.PERMANENT-ADDRESS' | translate }}</legend>
+
+    <div>
+        <label for="permanent-street-address">
+          {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.STREET-ADDRESS' | translate }}
+          <input id="permanent-street-address" type="text" [ngrxFormControlState]="(formState$ | async).controls.permanentStreetAddress" autocomplete="street-address">
+          <p *ngIf="(formState$ | async).controls.permanentStreetAddress.isInvalid && (formState$ | async).controls.permanentStreetAddress.isTouched" class="invalid">
+            {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+          </p>
+        </label>
+      </div>
+    
+      <div>
+        <label for="permanent-zip-code">
+          {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.ZIP-CODE' | translate }}
+          <input id="permanent-zip-code" type="text" [ngrxFormControlState]="(formState$ | async).controls.permanentZipCode" autocomplete="postal-code">
+          <p *ngIf="(formState$ | async).controls.permanentZipCode.isInvalid && (formState$ | async).controls.permanentZipCode.isTouched" class="invalid">
+            {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+          </p>
+        </label>
+      </div>
+    
+      <div>
+        <label for="permanent-city">
+          {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.CITY' | translate }}
+          <input id="permanent-city" type="text" [ngrxFormControlState]="(formState$ | async).controls.permanentCity">
+          <p *ngIf="(formState$ | async).controls.permanentCity.isInvalid && (formState$ | async).controls.permanentCity.isTouched" class="invalid">
+            {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+          </p>
+        </label>
+      </div>
+      
+      <div>
+        <label for="permanent-country">
+          {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.COUNTRY' | translate }}
+          <input id="permanent-country" type="text" [ngrxFormControlState]="(formState$ | async).controls.permanentCountry">
+          <p *ngIf="(formState$ | async).controls.permanentCountry.isInvalid && (formState$ | async).controls.permanentCountry.isTouched" class="invalid">
+            {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+          </p>
+        </label>
+      </div>
+
+  </fieldset>
+
+  <fieldset>
+    <legend>{{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-WITH-ACTIVITY.PREFERRED-ACTIVITY-PLACE' | translate }}</legend>
+
+      <div>
+        <label for="activity-city">
+          {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.CITY' | translate }}*
+          <input id="activity-city" type="text" [ngrxFormControlState]="(formState$ | async).controls.activityCity">
+          <p *ngIf="(formState$ | async).controls.activityCity.isInvalid && (formState$ | async).controls.activityCity.isTouched" class="invalid">
+            {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+          </p>
+        </label>
+      </div>
+      
+      <div>
+        <label for="activity-country">
+          {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.COUNTRY' | translate }}*
+          <input id="activity-country" type="text" [ngrxFormControlState]="(formState$ | async).controls.activityCountry">
+          <p *ngIf="(formState$ | async).controls.activityCountry.isInvalid && (formState$ | async).controls.activityCountry.isTouched" class="invalid">
+            {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+          </p>
+        </label>
+      </div>
+
+  </fieldset>
+
+  <fieldset>
+    <legend>{{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-WITH-ACTIVITY.HELP-ACTIVITY' | translate }}</legend>
+
+    <div>
+      <label for="help-activity">
+        {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.ACTIVITY-SELECTION' | translate }}
+        <select id="help-activity" [ngrxFormControlState]="(formState$ | async).controls.helpActivity">
+          <option *ngFor="let activity of (helpActivities$ | async)" [value]="activity">
+            {{ activity.name }}
+          </option>
+        </select>
+        <p *ngIf="(formState$ | async).controls.helpActivity.isInvalid && (formState$ | async).controls.helpActivity.isTouched" class="invalid">
+          {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+        </p>
+      </label>
+    </div>
+
+    <div>
+      <label for="readyToHelpStartDate">
+        {{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-WITH-ACTIVITY.READY-TO-HELP-START-DATE' | translate }}*
+        <input id="readyToHelpStartDate" type="date" [ngrxFormControlState]="(formState$ | async).controls.readyToHelpStartDate">
+        <p *ngIf="(formState$ | async).controls.readyToHelpStartDate.isInvalid && (formState$ | async).controls.readyToHelpStartDate.isTouched" class="invalid">
+          {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+        </p>
+      </label>
+    </div>
+
+    <div>
+      <label for="readyToHelpEndDate">
+        {{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-WITH-ACTIVITY.READY-TO-HELP-END-DATE' | translate }}*
+        <input id="readyToHelpEndDate" type="date" [ngrxFormControlState]="(formState$ | async).controls.readyToHelpEndDate">
+        <p *ngIf="(formState$ | async).controls.readyToHelpEndDate.isInvalid && (formState$ | async).controls.readyToHelpEndDate.isTouched" class="invalid">
+          {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+        </p>
+      </label>
+    </div>
+
+  </fieldset>
+
+  <fieldset>
+    <legend>{{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.CONTACT' | translate }}</legend>
+
+    <div>
+      <label for="phone-number">
+        {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.PHONE-NUMBER' | translate }}*
+        <input id="phone-number" type="tel" [ngrxFormControlState]="(formState$ | async).controls.phoneNumber">
+        <p *ngIf="(formState$ | async).controls.phoneNumber.isInvalid && (formState$ | async).controls.phoneNumber.isTouched" class="invalid">
+          {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+        </p>
+      </label>
+    </div>
+
+    <div>
+      <label for="email">
+        {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.E-MAIL' | translate }}*
+        <input id="email" type="email" [ngrxFormControlState]="(formState$ | async).controls.email">
+        <p *ngIf="(formState$ | async).controls.email.isInvalid && (formState$ | async).controls.email.isTouched" class="invalid">
+          {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
+        </p>
+      </label>
+    </div>
+
+  </fieldset>
+
+  <div>
+    <label for="hasProtectiveItems">
+      <input id="hasProtectiveItems" type="checkbox" [ngrxFormControlState]="(formState$ | async).controls.hasProtectiveItems">
+      {{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-WITH-ACTIVITY.HAS-PROTECTIVE-ITEMS' | translate }}
+    </label>
+  </div>
+
+  <button type="submit" [disabled]="!(formState$ | async).isValid">{{'SUBMIT' | translate}}</button>
+
+</form>
