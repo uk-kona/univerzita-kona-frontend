@@ -13,15 +13,15 @@ export class GeneralService {
         private httpClient: HttpClient
     ) {}
 
-    getPaymentData(): Observable<PaymentResource> {
+    getPaymentResource(): Observable<PaymentResource> {
         return this.httpClient.get<PaymentResource>(`${BASE_URL}/payment`);
     }
 
-    getWantToHelpData(): Observable<WantToHelpResource> {
+    getWantToHelpResource(): Observable<WantToHelpResource> {
         return this.httpClient.get<PaymentResource>(`${BASE_URL}/want-to-help`);
     }
 
-    getNeedHelpData(): Observable<NeedHelpResource> {
+    getNeedHelpResource(): Observable<NeedHelpResource> {
         return this.httpClient.get<PaymentResource>(`${BASE_URL}/need-help`);
     }
 }

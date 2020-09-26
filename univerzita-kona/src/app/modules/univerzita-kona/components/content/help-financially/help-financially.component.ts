@@ -28,7 +28,7 @@ export class HelpFinanciallyComponent {
   }
 
   generatePaymentData(): void {
-    this.paymentData$ = this.generalService.getPaymentData();
+    this.paymentData$ = this.generalService.getPaymentResource();
   }
 
 }
