@@ -1,29 +1,41 @@
 {
-  "APP": {
-    "UNIVERZITA-KONA": {
-      "DESCRIPTION": "...Stručný motivačný text s popisom...",
-      "NAV": {
-        "HELP-REQUEST": "Potrebujem pomoc",
-        "HELP-BY-ACTIVITY": "Chcem pomáhať aktivitou",
-        "HELP-FINANCIALLY": "Chcem pomáhať finančne",
-        "RESET": "Zrušiť",
-        "ABOUT": "O nas"
-      },
-      "CONTENT": {
-        "SUBMIT": "Odoslať",
-        "HELP-REQUEST": {
-          "E-MAIL": "Mailový kontakt",
-          "PHONE-NUMBER": "Telefonický kontakt"
-        },
-        "HELP-FINANCIALLY": {
-          "ADD-SPECIAL-CONDITIONS": "Pridať špeciálne podmienky pre použitie príspevku",
-          "SPECIAL-CONDITIONS": "Špeciálne podmienky",
-          "GENERATE-PAYMENT-DATA": "Generovať údaje pre platbu",
-          "PAYMENT-DATA-RESPONSE": "Údaje pre platbu"
-        }
-      }
-    },
-    "YES": "Áno",
-    "NO": "Nie"
-  }
+  "APP.UNIVERZITA-KONA.DESCRIPTION": "...Stručný motivačný text s popisom...",
+
+  "APP.UNIVERZITA-KONA.NAV.HELP-REQUEST": "Potrebujem pomoc",
+  "APP.UNIVERZITA-KONA.NAV.HELP-WITH-ACTIVITY": "Chcem byť dobrovoľník",
+  "APP.UNIVERZITA-KONA.NAV.HELP-FINANCIALLY": "Chcem pomáhať finančne",
+  "APP.UNIVERZITA-KONA.NAV.RESET": "Zrušiť",
+  "APP.UNIVERZITA-KONA.NAV.ABOUT": "O nas",
+
+  "APP.UNIVERZITA-KONA.CONTENT.SUBMIT": "Odoslať",
+  "APP.UNIVERZITA-KONA.CONTENT.FORM.NAME-SURNAME": "Meno a priezvisko",
+  "APP.UNIVERZITA-KONA.CONTENT.FORM.E-MAIL": "E-Mail",
+  "APP.UNIVERZITA-KONA.CONTENT.FORM.BIRTH-DATE": "Dátum narodenia",
+  "APP.UNIVERZITA-KONA.CONTENT.FORM.FACULTY": "Fakulta",
+  "APP.UNIVERZITA-KONA.CONTENT.FORM.PHONE-NUMBER": "Telefonné číslo",
+  "APP.UNIVERZITA-KONA.CONTENT.FORM.CONTACT": "Kontakt",
+  "APP.UNIVERZITA-KONA.CONTENT.FORM.STREET-ADDRESS": "Názov ulice a čislo domu",
+  "APP.UNIVERZITA-KONA.CONTENT.FORM.CITY": "Mesto",
+  "APP.UNIVERZITA-KONA.CONTENT.FORM.COUNTRY": "Štát",
+  "APP.UNIVERZITA-KONA.CONTENT.FORM.ZIP-CODE": "PSČ",
+  "APP.UNIVERZITA-KONA.CONTENT.FORM.PERMANENT-ADDRESS": "Adresa trvalého bydliska",
+  "APP.UNIVERZITA-KONA.CONTENT.FORM.RESIDENTIAL-ADDRESS": "Miesto momentálneho pobytu",
+  "APP.UNIVERZITA-KONA.CONTENT.FORM.ACTIVITY-SELECTION": "Výber aktivity",
+
+  "APP.UNIVERZITA-KONA.CONTENT.HELP-REQUEST.HELP-ACTIVITY": "S čím potrebujete pomôcť",
+  "APP.UNIVERZITA-KONA.CONTENT.HELP-REQUEST.HELP-ACTIVITY-SELECTION": "S čím potrebujete pomôcť",
+
+  "APP.UNIVERZITA-KONA.CONTENT.HELP-WITH-ACTIVITY.HELP-ACTIVITY": "Ako viete pomôcť",
+  "APP.UNIVERZITA-KONA.CONTENT.HELP-WITH-ACTIVITY.PREFERRED-ACTIVITY-PLACE": "Preferované miesto výkonu dobrovoľníckej činnosti",
+  "APP.UNIVERZITA-KONA.CONTENT.HELP-WITH-ACTIVITY.READY-TO-HELP-START-DATE": "Kedy môžete začať",
+  "APP.UNIVERZITA-KONA.CONTENT.HELP-WITH-ACTIVITY.READY-TO-HELP-END-DATE": "Dokedy ste k dispozícii",
+  "APP.UNIVERZITA-KONA.CONTENT.HELP-WITH-ACTIVITY.HAS-PROTECTIVE-ITEMS": "Mám ochranné pomôcky (rúško, rukavice)",
+
+  "APP.UNIVERZITA-KONA.CONTENT.HELP-FINANCIALLY.ADD-SPECIAL-CONDITIONS": "Pridať špeciálne podmienky pre použitie príspevku",
+  "APP.UNIVERZITA-KONA.CONTENT.HELP-FINANCIALLY.SPECIAL-CONDITIONS": "Špeciálne podmienky",
+  "APP.UNIVERZITA-KONA.CONTENT.HELP-FINANCIALLY.GENERATE-PAYMENT-DATA": "Generovať údaje pre platbu",
+  "APP.UNIVERZITA-KONA.CONTENT.HELP-FINANCIALLY.PAYMENT-DATA-RESPONSE": "Údaje pre platbu",
+
+  "YES": "Áno",
+  "NO": "Nie"
 }

@@ -3,7 +3,7 @@
 <form [ngrxFormState]="(formState$ | async)" (ngSubmit)="onSubmit()">
 
   <label for="areSpecialConditions">
-    <input id="areSpecialConditions" type="checkbox" [value]="true" [ngrxFormControlState]="(formState$ | async).controls.areSpecialConditions">
+    <input id="areSpecialConditions" type="checkbox" [ngrxFormControlState]="(formState$ | async).controls.areSpecialConditions">
     {{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-FINANCIALLY.ADD-SPECIAL-CONDITIONS' | translate }}
   </label>
 
@@ -22,8 +22,8 @@
   <button type="submit" [disabled]="!(formState$ | async).isValid" (click)="generatePaymentData()">
     {{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-FINANCIALLY.GENERATE-PAYMENT-DATA' | translate }}
   </button>
-  <p *ngIf="response$">
-    {{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-FINANCIALLY.PAYMENT-DATA-RESPONSE' | translate }}: {{ response$ | async | json }}
+  <p *ngIf="paymentData$">
+    {{ 'APP.UNIVERZITA-KONA.CONTENT.HELP-FINANCIALLY.PAYMENT-DATA-RESPONSE' | translate }}: {{ paymentData$ | async | json }}
   </p>
 
 </form>

@@ -11,7 +11,7 @@ import * as fromForm from '../../state/form.reducer';
 })
 export class NavComponent {
 
-  contentTypes: ContentType[] = ['HELP-REQUEST', 'HELP-BY-ACTIVITY', 'HELP-FINANCIALLY', 'ABOUT'];
+  contentTypes: ContentType[] = ['HELP-REQUEST', 'HELP-WITH-ACTIVITY', 'HELP-FINANCIALLY', 'ABOUT'];
 
   constructor(
     private store: Store<fromForm.State>

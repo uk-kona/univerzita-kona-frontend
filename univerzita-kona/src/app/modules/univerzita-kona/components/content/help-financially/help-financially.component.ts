@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { FormGroupState } from 'ngrx-forms';
 import { HelpFinanciallyFormValue, State } from '../../../state/form.reducer';
-import { GenerateDataService } from '../../../services/generate-data.service';
+import { GeneralService } from '../../../services/general.service';
 import { PaymentResource } from '../../../models/payment-resource.model';
 
 @Component({
@@ -14,11 +14,11 @@ import { PaymentResource } from '../../../models/payment-resource.model';
 export class HelpFinanciallyComponent {
 
   formState$: Observable<FormGroupState<HelpFinanciallyFormValue>>;
-  response$: Observable<PaymentResource>;
+  paymentData$: Observable<PaymentResource>;
 
   constructor(
     private store: Store<State>,
-    private generateDataService: GenerateDataService,
+    private generalService: GeneralService,
   ) {
     this.formState$ = this.store.select(s => s.forms.helpFinanciallyForm);
   }
@@ -28,7 +28,7 @@ export class HelpFinanciallyComponent {
   }
 
   generatePaymentData(): void {
-    this.response$ = this.generateDataService.getGeneratedData();
+    this.paymentData$ = this.generalService.getPaymentResource();
   }
 
 }
