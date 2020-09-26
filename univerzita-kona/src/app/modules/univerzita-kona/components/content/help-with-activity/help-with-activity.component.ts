@@ -15,7 +15,7 @@ import { UKFaculty } from '../../../models/uk-faculty.model';
 export class HelpWithActivityComponent implements OnInit {
 
   formState$: Observable<FormGroupState<HelpWithActivityFormValue>>;
-  helpActivities$: Observable<HelpActivity[]>;
+  skills$: Observable<HelpActivity[]>;
   faculties$: Observable<UKFaculty[]>;
 
   constructor(
@@ -25,7 +25,7 @@ export class HelpWithActivityComponent implements OnInit {
 
   ngOnInit(): void {
     this.formState$ = this.store.select(s => s.forms.helpWithActivityForm);
-    this.helpActivities$ = this.mockedService.getHelpActivities();
+    this.skills$ = this.mockedService.getSkills();
     this.faculties$ = this.mockedService.getFaculties();
   }
 

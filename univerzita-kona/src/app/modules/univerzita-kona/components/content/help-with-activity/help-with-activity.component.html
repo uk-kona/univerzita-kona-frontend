@@ -113,7 +113,7 @@
       <label for="help-activity">
         {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.ACTIVITY-SELECTION' | translate }}
         <select id="help-activity" [ngrxFormControlState]="(formState$ | async).controls.helpActivity">
-          <option *ngFor="let activity of (helpActivities$ | async)" [value]="activity">
+          <option *ngFor="let activity of (skills$ | async)" [value]="activity">
             {{ activity.name }}
           </option>
         </select>

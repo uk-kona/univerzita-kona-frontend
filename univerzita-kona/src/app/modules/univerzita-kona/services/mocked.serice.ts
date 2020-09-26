@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { HelpActivity } from '../models/help-activity.model';
+import { Skill } from '../models/skill.model';
 import { UKFaculty } from '../models/uk-faculty.model';
 
 @Injectable()
@@ -22,6 +23,18 @@ export class MockedService {
             { name: 'Filtrovanie pacientov pri vstupe do nemocnice (meranie teploty)', value: 'patients-grouping'},
         ];
         return of(helpActivities);
+    }
+
+    getSkills(): Observable<Skill[]> {
+        const skills: Skill[] = [
+            { name: 'Online vzdelávanie detí', value: 'online-education'},
+            { name: 'Šitie rúšok', value: 'masks-sewing'},
+            { name: 'Nákup pre seniorov ', value: 'senior-shopping'},
+            { name: 'Babysitting', value: 'babysitting'},
+            { name: 'Darovanie krvi', value: 'blood-donation'},
+            { name: 'Iné', value: 'other'},
+        ];
+        return of(skills);
     }
 
     getFaculties(): Observable<UKFaculty[]> {
