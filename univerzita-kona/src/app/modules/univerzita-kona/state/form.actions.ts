@@ -5,6 +5,7 @@ export enum FormActionTypes {
   ChangeContentType = '[Form] Change Content Type',
   SetHelpRequestFormPhoneNumberValue = '[Form] Set - Help Request Form - Phone Number Value',
   ResetState = '[Form] Reset',
+  ResetSelectedSkills = '[Form] [Help with activity] ResetSelected Skills'
 }
 
 export class ChangeContentType implements Action {
@@ -19,10 +20,16 @@ export class ResetState implements Action {
   constructor() {}
 }
 
+export class ResetSelectedSkills implements Action {
+  readonly type = FormActionTypes.ResetSelectedSkills;
+
+  constructor() {}
+}
+
 export class SetHelpRequestFormPhoneNumberValue implements Action {
   readonly type = FormActionTypes.SetHelpRequestFormPhoneNumberValue;
 
   constructor(public payload: any) {}
 }
 
-export type FormActions = ChangeContentType | SetHelpRequestFormPhoneNumberValue | ResetState;
+export type FormActions = ChangeContentType | SetHelpRequestFormPhoneNumberValue | ResetState | ResetSelectedSkills;
