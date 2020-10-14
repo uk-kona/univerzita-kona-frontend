@@ -1,9 +1,12 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { PaymentResource } from '../models/payment-resource.model';
 import { Observable } from 'rxjs';
-import { WantToHelpResource } from '../models/want-to-help-resource.model';
+import { FormGroupState } from 'ngrx-forms';
+import { map, take } from 'rxjs/operators';
+import { HelpWithActivityResponse } from '../models/help-with-activity-response.model';
 import { NeedHelpResource } from '../models/need-help-resource.model';
+import { PaymentResource } from '../models/payment-resource.model';
+import { WantToHelpResource } from '../models/want-to-help-resource.model';
 
 const BASE_URL = 'http://127.0.0.1:5000/api/v1';
 
@@ -23,5 +26,9 @@ export class GeneralService {
 
     getNeedHelpResource(): Observable<NeedHelpResource> {
         return this.httpClient.get<PaymentResource>(`${BASE_URL}/need-help`);
+    }
+
+    postHelpWithActivityResponse(response: HelpWithActivityResponse) {
+        return this.httpClient.post<HelpWithActivityResponse>(`${BASE_URL}/help-with-activity`, response);
     }
 }

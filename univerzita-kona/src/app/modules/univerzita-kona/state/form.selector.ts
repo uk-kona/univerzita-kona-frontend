@@ -7,5 +7,10 @@ const getFormFeatureName = createFeatureSelector<FormState>(formsFeatureName);
 
 export const getContentType = createSelector(
   getFormFeatureName,
-  state => state.contentType
+  state => state.contentType,
+);
+
+export const getHelpWithActivityForm = createSelector(
+  getFormFeatureName,
+  state => state.helpWithActivityForm,
 );

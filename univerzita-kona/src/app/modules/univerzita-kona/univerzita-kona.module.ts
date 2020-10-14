@@ -15,9 +15,10 @@ import { StoreModule } from '@ngrx/store';
 import { formReducer } from './state/form.reducer';
 import { NgrxFormsModule } from 'ngrx-forms';
 import { formsFeatureName } from './state/form.selector';
-import { GeneralService } from './services/general.service';
-import { MockedService } from './services/mocked.serice';
 import { HelpWithActivityComponent } from './components/content/help-with-activity/help-with-activity.component';
+import { GeneralService } from './shared/services/general.service';
+import { MockedService } from './shared/services/mocked.serice';
+import { HelpWIthActivityMapper } from './shared/mappers/help-with-activity.mapper';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { HelpWithActivityComponent } from './components/content/help-with-activi
   providers: [
     GeneralService,
     MockedService,
+    HelpWIthActivityMapper,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

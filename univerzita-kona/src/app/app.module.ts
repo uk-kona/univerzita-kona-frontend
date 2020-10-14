@@ -15,6 +15,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import * as fromForm from './modules/univerzita-kona/state/form.reducer';
 import { NgrxFormsModule } from 'ngrx-forms';
+import { EffectsModule } from '@ngrx/effects';
 
 const reducers: ActionReducerMap<any> = {
   forms: fromForm.formReducer
@@ -55,6 +56,7 @@ const metaReducers: MetaReducer<any, any>[] = [localStorageSyncReducer];
 
     CoreModule,
     UniverzitaKonaModule,
+    EffectsModule.forRoot([]),
   ],
   providers: [],
   bootstrap: [AppComponent]

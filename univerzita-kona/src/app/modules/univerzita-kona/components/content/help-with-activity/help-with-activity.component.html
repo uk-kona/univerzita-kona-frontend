@@ -1,6 +1,6 @@
 <h2>{{ 'APP.UNIVERZITA-KONA.NAV.HELP-WITH-ACTIVITY' | translate }}</h2>
 
-<form [ngrxFormState]="(formState$ | async)" (ngSubmit)="onSubmit()">
+<form [ngrxFormState]="(formState$ | async)">
     
   <div>
     <label for="name-surname">
@@ -27,15 +27,10 @@
       {{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.FACULTY' | translate }}*
     </label>
     <select id="faculty" [ngrxFormControlState]="(formState$ | async).controls.faculty" name="faculty">
-      <option *ngFor="let faculty of (faculties$ | async)" [value]="faculty.id">
+      <option *ngFor="let faculty of (faculties$ | async)" [value]="faculty">
         {{ faculty.name }}
-        <!-- {{ (formState$ | async)?.controls?.faculty?.value?.value?.name ? "yes" :  "no" }} -->
-        <!-- <p>faculty: {{faculty}}</p>
-        <p>faculty.name: {{faculty.name}}</p> -->
       </option>
     </select>
-    <p>{{(formState$ | async)?.controls?.faculty?.value | json}}</p>
-    <p>{{(formState$ | async)?.controls?.faculty?.value?.value?.name | json}}</p>
     <p *ngIf="(formState$ | async).controls.faculty.isInvalid && (formState$ | async).controls.faculty.isTouched" class="invalid">
       {{ 'APP.UNIVERZITA-KONA.CONTENT.INPUT.INVALID' | translate }}
     </p>
@@ -182,6 +177,6 @@
     </label>
   </div>
 
-  <button type="submit" [disabled]="!(formState$ | async).isValid">{{'SUBMIT' | translate}}</button>
+  <button type="submit" [disabled]="!(formState$ | async).isValid" (click)=onSubmit()>{{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.SUBMIT' | translate }}</button>
 
 </form>

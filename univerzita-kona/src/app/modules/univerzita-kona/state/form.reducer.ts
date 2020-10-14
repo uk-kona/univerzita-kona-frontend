@@ -3,10 +3,10 @@ import * as fromRoot from '../../../state/app.state';
 import { FormActions, FormActionTypes } from './form.actions';
 import { createFormGroupState, FormGroupState, formGroupReducer, updateGroup, validate, Boxed, box } from 'ngrx-forms';
 import { required, pattern, number, equalTo } from 'ngrx-forms/validation';
-import { HelpActivity } from '../models/help-activity.model';
-import { UKFaculty } from '../models/uk-faculty.model';
-import { Skill } from '../models/skill.model';
 import { Validators } from '@angular/forms';
+import { HelpActivity } from '../shared/models/help-activity.model';
+import { Skill } from '../shared/models/skill.model';
+import { UKFaculty } from '../shared/models/uk-faculty.model';
 
 export interface State extends fromRoot.AppState {
   forms: FormState;
@@ -195,7 +195,7 @@ export function formReducer(state: FormState = initialState, action: FormActions
   }
 
   switch (action.type) {
-    case FormActionTypes.ChangeContentType:
+    case FormActionTypes.changeContentType:
       return {
         ...state,
         contentType: action.payload
@@ -208,7 +208,7 @@ export function formReducer(state: FormState = initialState, action: FormActions
     //     helpFinanciallyForm: { ... state.helpFinanciallyForm, phoneNumber: action.payload?.phoneNumber?.internationalNumber }
     //   };
 
-    case FormActionTypes.ResetState:
+    case FormActionTypes.resetState:
       return Object.assign({}, initialState);
 
     default:

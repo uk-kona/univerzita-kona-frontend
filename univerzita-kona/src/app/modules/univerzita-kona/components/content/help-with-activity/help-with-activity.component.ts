@@ -1,13 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { AddArrayControlAction, FormGroupState } from 'ngrx-forms';
+import { FormGroupState } from 'ngrx-forms';
 import { HelpWithActivityFormValue, State } from '../../../state/form.reducer';
 import { Store } from '@ngrx/store';
-import { MockedService } from '../../../services/mocked.serice';
-import { UKFaculty } from '../../../models/uk-faculty.model';
-import { Skill } from '../../../models/skill.model';
-import { map, take, withLatestFrom } from 'rxjs/operators';
-import { ResetSelectedSkills } from '../../../state/form.actions';
+import { map, take } from 'rxjs/operators';
+import { Skill } from '../../../shared/models/skill.model';
+import { UKFaculty } from '../../../shared/models/uk-faculty.model';
+import { GeneralService } from '../../../shared/services/general.service';
+import { MockedService } from '../../../shared/services/mocked.serice';
+import { HelpWIthActivityMapper } from '../../../shared/mappers/help-with-activity.mapper';
+import { HelpWithActivityResponse } from '../../../shared/models/help-with-activity-response.model';
+import * as fromActions from '../../../state/form.actions';
 
 @Component({
   selector: 'app-help-with-activity',
@@ -23,40 +26,27 @@ export class HelpWithActivityComponent implements OnInit {
   constructor(
     private store: Store<State>,
     private mockedService: MockedService,
+    private generalService: GeneralService,
+    private mapper: HelpWIthActivityMapper,
   ) {}
 
   ngOnInit(): void {
     this.formState$ = this.store.select(s => s.forms.helpWithActivityForm);
     this.skills$ = this.mockedService.getSkills();
-    // this.store.dispatch(new ResetSelectedSkills());
-    // this.skills$
-    // .pipe(
-    //   withLatestFrom(this.formState$),
-    //   map(([newSkills, state]) => {
-    //     newSkills.forEach((newSkill, index) => {
-
-    //     }
-    //   }))
-    // )
-    
-    // .
-    // this.skills$.subscribe((skills: Skill[]) => {
-    //   skills.forEach((newSkill, index) => {
-    //     const existingSkill = this.formState$.
-    //     this.formState$
-    //       .pipe(
-    //         take(1),
-    //         map(state => state.controls.skills.id),
-    //         map(id => new AddArrayControlAction(id, false, index)),
-    //       ).subscribe(this.store)
-    //   })
-      
-    // })
     this.faculties$ = this.mockedService.getFaculties();
   }
 
   onSubmit(): void {
-    console.log('SUBMIT');
+    this.store.dispatch(new fromActions.SubmitHelpWithActivityForm());
+    this.formState$
+      .pipe(
+          take(1),
+          map((data: FormGroupState<HelpWithActivityFormValue>) => data.value),
+          map((data: HelpWithActivityFormValue) => this.mapper.mapToResponse(data))
+      )
+      .subscribe((data: HelpWithActivityResponse) => {
+        this.generalService.postHelpWithActivityResponse(data);
+      })
   }
 
 }

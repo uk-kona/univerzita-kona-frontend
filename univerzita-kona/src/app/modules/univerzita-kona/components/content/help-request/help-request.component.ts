@@ -3,8 +3,8 @@ import { Store } from '@ngrx/store';
 import { HelpRequestFormValue, State } from '../../../state/form.reducer';
 import { FormGroupState } from 'ngrx-forms';
 import { Observable } from 'rxjs';
-import { HelpActivity } from '../../../models/help-activity.model';
-import { MockedService } from '../../../services/mocked.serice';
+import { HelpActivity } from '../../../shared/models/help-activity.model';
+import { MockedService } from '../../../shared/services/mocked.serice';
 
 @Component({
   selector: 'app-help-request',
