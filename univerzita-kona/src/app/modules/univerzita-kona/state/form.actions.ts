@@ -22,7 +22,7 @@ export class ResetState implements Action {
 export class SubmitHelpWithActivityForm implements Action {
   readonly type = FormActionTypes.submitHelpWithActivityForm;
 
-  constructor(){}
+  constructor() {}
 }
 
 export type FormActions = 

@@ -40,7 +40,6 @@ export class HelpWithActivityComponent implements OnInit {
     this.store.dispatch(new fromActions.SubmitHelpWithActivityForm());
     this.formState$
       .pipe(
-          take(1),
           map((data: FormGroupState<HelpWithActivityFormValue>) => data.value),
           map((data: HelpWithActivityFormValue) => this.mapper.mapToResponse(data))
       )

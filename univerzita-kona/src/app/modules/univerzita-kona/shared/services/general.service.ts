@@ -17,18 +17,14 @@ export class GeneralService {
     ) {}
 
     getPaymentResource(): Observable<PaymentResource> {
-        return this.httpClient.get<PaymentResource>(`${BASE_URL}/payment`);
-    }
-
-    getWantToHelpResource(): Observable<WantToHelpResource> {
-        return this.httpClient.get<PaymentResource>(`${BASE_URL}/want-to-help`);
-    }
-
-    getNeedHelpResource(): Observable<NeedHelpResource> {
-        return this.httpClient.get<PaymentResource>(`${BASE_URL}/need-help`);
+        return this.httpClient.get<PaymentResource>(`${BASE_URL}/help-financially`);
     }
 
     postHelpWithActivityResponse(response: HelpWithActivityResponse) {
         return this.httpClient.post<HelpWithActivityResponse>(`${BASE_URL}/help-with-activity`, response);
+    }
+
+    getNeedHelpResource(): Observable<NeedHelpResource> {
+        return this.httpClient.get<PaymentResource>(`${BASE_URL}/need-help`);
     }
 }

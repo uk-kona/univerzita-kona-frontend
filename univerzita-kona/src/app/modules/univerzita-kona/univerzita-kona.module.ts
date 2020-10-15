@@ -19,6 +19,8 @@ import { HelpWithActivityComponent } from './components/content/help-with-activi
 import { GeneralService } from './shared/services/general.service';
 import { MockedService } from './shared/services/mocked.serice';
 import { HelpWIthActivityMapper } from './shared/mappers/help-with-activity.mapper';
+import { EffectsModule } from '@ngrx/effects';
+import { effects } from './state';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { HelpWIthActivityMapper } from './shared/mappers/help-with-activity.mapp
     }),
 
     StoreModule.forFeature(formsFeatureName, formReducer),
+    EffectsModule.forFeature(effects),
     NgrxFormsModule,
   ],
   exports: [
