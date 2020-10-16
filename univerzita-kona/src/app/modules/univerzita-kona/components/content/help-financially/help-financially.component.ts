@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { FormGroupState } from 'ngrx-forms';
 import { HelpFinanciallyFormValue, State } from '../../../state/form.reducer';
 import { PaymentResource } from '../../../shared/models/payment-resource.model';
-import { GeneralService } from '../../../shared/services/general.service';
+import { GeneralHttpService } from '../../../shared/services/general-http.service';
 
 @Component({
   selector: 'app-help-financially',
@@ -18,7 +18,7 @@ export class HelpFinanciallyComponent {
 
   constructor(
     private store: Store<State>,
-    private generalService: GeneralService,
+    private generalService: GeneralHttpService,
   ) {
     this.formState$ = this.store.select(s => s.forms.helpFinanciallyForm);
   }

@@ -12,5 +12,4 @@ export const getContentType = createSelector(
 
 export const getHelpWithActivityForm = createSelector(
   getFormFeatureName,
-  state => state.helpWithActivityForm,
-);
+  state => state.helpWithActivityForm.value);

@@ -3,13 +3,11 @@ import { Observable } from 'rxjs';
 import { FormGroupState } from 'ngrx-forms';
 import { HelpWithActivityFormValue, State } from '../../../state/form.reducer';
 import { Store } from '@ngrx/store';
-import { map, take } from 'rxjs/operators';
 import { Skill } from '../../../shared/models/skill.model';
 import { Faculty } from '../../../shared/models/faculty.model';
-import { GeneralService } from '../../../shared/services/general.service';
+import { GeneralHttpService } from '../../../shared/services/general-http.service';
 import { MockedService } from '../../../shared/services/mocked.serice';
-import { HelpWIthActivityMapper } from '../../../shared/mappers/help-with-activity.mapper';
-import { HelpWithActivityResponse } from '../../../shared/models/help-with-activity-response.model';
+import { HelpWithActivityMapper } from '../../../shared/mappers/help-with-activity.mapper';
 import * as fromActions from '../../../state/form.actions';
 
 @Component({
@@ -26,8 +24,8 @@ export class HelpWithActivityComponent implements OnInit {
   constructor(
     private store: Store<State>,
     private mockedService: MockedService,
-    private generalService: GeneralService,
-    private mapper: HelpWIthActivityMapper,
+    private generalService: GeneralHttpService,
+    private mapper: HelpWithActivityMapper,
   ) {}
 
   ngOnInit(): void {
@@ -38,14 +36,6 @@ export class HelpWithActivityComponent implements OnInit {
 
   onSubmit(): void {
     this.store.dispatch(new fromActions.SubmitHelpWithActivityForm());
-    this.formState$
-      .pipe(
-          map((data: FormGroupState<HelpWithActivityFormValue>) => data.value),
-          map((data: HelpWithActivityFormValue) => this.mapper.mapToResponse(data))
-      )
-      .subscribe((data: HelpWithActivityResponse) => {
-        this.generalService.postHelpWithActivityResponse(data);
-      })
   }
 
 }

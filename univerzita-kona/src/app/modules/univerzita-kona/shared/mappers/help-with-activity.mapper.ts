@@ -3,7 +3,7 @@ import { HelpWithActivityFormValue } from '../../state/form.reducer';
 import { HelpWithActivityResponse } from '../models/help-with-activity-response.model';
 
 @Injectable()
-export class HelpWIthActivityMapper {
+export class HelpWithActivityMapper {
 
     public mapToResponse(input: HelpWithActivityFormValue): HelpWithActivityResponse {
         return {

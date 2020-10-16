@@ -28,7 +28,7 @@
     </label>
     <select id="faculty" [ngrxFormControlState]="(formState$ | async).controls.faculty" name="faculty">
       <option *ngFor="let faculty of (faculties$ | async)" [value]="faculty">
-        {{ faculty.name }}
+        {{ faculty.value }}
       </option>
     </select>
     <p *ngIf="(formState$ | async).controls.faculty.isInvalid && (formState$ | async).controls.faculty.isTouched" class="invalid">

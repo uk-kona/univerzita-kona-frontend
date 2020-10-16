@@ -4,7 +4,8 @@ import { Action } from '@ngrx/store';
 export enum FormActionTypes {
   changeContentType = '[Form] Change Content Type',
   resetState = '[Form] Reset',
-  submitHelpWithActivityForm = '[Form] [Help with activity] Submit'
+  submitHelpWithActivityForm = '[Form] [Help with activity] Submit',
+  submittedHelpWithActivityForm = '[Form] [Help with activity] Submitted'
 }
 
 export class ChangeContentType implements Action {
@@ -25,7 +26,14 @@ export class SubmitHelpWithActivityForm implements Action {
   constructor() {}
 }
 
+export class SubmittedHelpWithActivityForm implements Action {
+  readonly type = FormActionTypes.submittedHelpWithActivityForm;
+
+  constructor() {}
+}
+
 export type FormActions = 
   ChangeContentType | 
   ResetState | 
-  SubmitHelpWithActivityForm;
+  SubmitHelpWithActivityForm |
+  SubmittedHelpWithActivityForm;

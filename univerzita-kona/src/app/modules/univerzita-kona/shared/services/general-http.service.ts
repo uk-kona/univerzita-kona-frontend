@@ -11,7 +11,7 @@ import { Skill } from '../models/skill.model';
 const BASE_URL = 'http://127.0.0.1:5000/api/v1';
 
 @Injectable()
-export class GeneralService {
+export class GeneralHttpService {
     constructor(
         private httpClient: HttpClient
     ) {}
@@ -32,8 +32,8 @@ export class GeneralService {
         return this.httpClient.get<PaymentResource>(`${BASE_URL}/help-financially`);
     }
 
-    postHelpWithActivityResponse(response: HelpWithActivityResponse) {
-        return this.httpClient.post(`${BASE_URL}/help-with-activity`, response);
+    postHelpWithActivityResponse(response: HelpWithActivityResponse): Observable<Response> {
+        return this.httpClient.post<Response>(`${BASE_URL}/help-with-activity`, response);
     }
 
     getNeedHelpResource(): Observable<NeedHelpResource> {
