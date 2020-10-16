@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ContentType } from '../../shared/constants/constants';
 import { Store } from '@ngrx/store';
-import * as formActions from '../../state/form.actions';
+import * as fromActions from '../../state/form.actions';
 import * as fromForm from '../../state/form.reducer';
 
 @Component({
@@ -18,11 +18,11 @@ export class NavComponent {
   ) { }
 
   setContentType(contentType: ContentType): void {
-    this.store.dispatch(new formActions.ChangeContentType(contentType));
+    this.store.dispatch(new fromActions.ChangeContentType(contentType));
   }
 
   resetState(): void {
-    this.store.dispatch(new formActions.ResetState());
+    this.store.dispatch(new fromActions.ResetState());
   }
 
 }

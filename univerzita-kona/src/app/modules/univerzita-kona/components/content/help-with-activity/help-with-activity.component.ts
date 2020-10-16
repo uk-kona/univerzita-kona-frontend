@@ -3,9 +3,12 @@ import { Observable } from 'rxjs';
 import { FormGroupState } from 'ngrx-forms';
 import { HelpWithActivityFormValue, State } from '../../../state/form.reducer';
 import { Store } from '@ngrx/store';
-import { MockedService } from '../../../services/mocked.serice';
-import { HelpActivity } from '../../../models/help-activity.model';
-import { UKFaculty } from '../../../models/uk-faculty.model';
+import { Skill } from '../../../shared/models/skill.model';
+import { Faculty } from '../../../shared/models/faculty.model';
+import { GeneralHttpService } from '../../../shared/services/general-http.service';
+import { MockedService } from '../../../shared/services/mocked.serice';
+import { HelpWithActivityMapper } from '../../../shared/mappers/help-with-activity.mapper';
+import * as fromActions from '../../../state/form.actions';
 
 @Component({
   selector: 'app-help-with-activity',
@@ -15,22 +18,24 @@ import { UKFaculty } from '../../../models/uk-faculty.model';
 export class HelpWithActivityComponent implements OnInit {
 
   formState$: Observable<FormGroupState<HelpWithActivityFormValue>>;
-  helpActivities$: Observable<HelpActivity[]>;
-  faculties$: Observable<UKFaculty[]>;
+  skills$: Observable<Skill[]>;
+  faculties$: Observable<Faculty[]>;
 
   constructor(
     private store: Store<State>,
     private mockedService: MockedService,
+    private generalService: GeneralHttpService,
+    private mapper: HelpWithActivityMapper,
   ) {}
 
   ngOnInit(): void {
     this.formState$ = this.store.select(s => s.forms.helpWithActivityForm);
-    this.helpActivities$ = this.mockedService.getHelpActivities();
+    this.skills$ = this.mockedService.getSkills();
     this.faculties$ = this.mockedService.getFaculties();
   }
 
   onSubmit(): void {
-    console.log('SUBMIT');
+    this.store.dispatch(new fromActions.SubmitHelpWithActivityForm());
   }
 
 }

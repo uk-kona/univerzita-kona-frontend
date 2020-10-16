@@ -15,9 +15,13 @@ import { StoreModule } from '@ngrx/store';
 import { formReducer } from './state/form.reducer';
 import { NgrxFormsModule } from 'ngrx-forms';
 import { formsFeatureName } from './state/form.selector';
-import { GeneralService } from './services/general.service';
-import { MockedService } from './services/mocked.serice';
 import { HelpWithActivityComponent } from './components/content/help-with-activity/help-with-activity.component';
+import { GeneralHttpService } from './shared/services/general-http.service';
+import { MockedService } from './shared/services/mocked.serice';
+import { HelpWithActivityMapper } from './shared/mappers/help-with-activity.mapper';
+import { EffectsModule } from '@ngrx/effects';
+import { effects } from './state';
+import { FormStoreFacadeService } from './shared/services/form-store-facade.service';
 
 @NgModule({
   declarations: [
@@ -43,14 +47,17 @@ import { HelpWithActivityComponent } from './components/content/help-with-activi
     }),
 
     StoreModule.forFeature(formsFeatureName, formReducer),
+    EffectsModule.forFeature(effects),
     NgrxFormsModule,
   ],
   exports: [
     UniverzitaKonaComponent,
   ],
   providers: [
-    GeneralService,
+    GeneralHttpService,
     MockedService,
+    HelpWithActivityMapper,
+    FormStoreFacadeService,
   ],
   schemas: [
     CUSTOM_ELEMENTS_SCHEMA,

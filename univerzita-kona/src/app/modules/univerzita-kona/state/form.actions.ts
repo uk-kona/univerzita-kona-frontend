@@ -2,27 +2,38 @@ import { ContentType } from '../shared/constants/constants';
 import { Action } from '@ngrx/store';
 
 export enum FormActionTypes {
-  ChangeContentType = '[Form] Change Content Type',
-  SetHelpRequestFormPhoneNumberValue = '[Form] Set - Help Request Form - Phone Number Value',
-  ResetState = '[Form] Reset',
+  changeContentType = '[Form] Change Content Type',
+  resetState = '[Form] Reset',
+  submitHelpWithActivityForm = '[Form] [Help with activity] Submit',
+  submittedHelpWithActivityForm = '[Form] [Help with activity] Submitted'
 }
 
 export class ChangeContentType implements Action {
-  readonly type = FormActionTypes.ChangeContentType;
+  readonly type = FormActionTypes.changeContentType;
 
   constructor(public payload: ContentType) {}
 }
 
 export class ResetState implements Action {
-  readonly type = FormActionTypes.ResetState;
+  readonly type = FormActionTypes.resetState;
 
   constructor() {}
 }
 
-export class SetHelpRequestFormPhoneNumberValue implements Action {
-  readonly type = FormActionTypes.SetHelpRequestFormPhoneNumberValue;
+export class SubmitHelpWithActivityForm implements Action {
+  readonly type = FormActionTypes.submitHelpWithActivityForm;
 
-  constructor(public payload: any) {}
+  constructor() {}
 }
 
-export type FormActions = ChangeContentType | SetHelpRequestFormPhoneNumberValue | ResetState;
+export class SubmittedHelpWithActivityForm implements Action {
+  readonly type = FormActionTypes.submittedHelpWithActivityForm;
+
+  constructor() {}
+}
+
+export type FormActions = 
+  ChangeContentType | 
+  ResetState | 
+  SubmitHelpWithActivityForm |
+  SubmittedHelpWithActivityForm;

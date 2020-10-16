@@ -1,10 +1,11 @@
 import { ContentType } from '../shared/constants/constants';
 import * as fromRoot from '../../../state/app.state';
 import { FormActions, FormActionTypes } from './form.actions';
-import { createFormGroupState, FormGroupState, formGroupReducer, updateGroup, validate } from 'ngrx-forms';
-import { required, pattern, number } from 'ngrx-forms/validation';
-import { HelpActivity } from '../models/help-activity.model';
-import { UKFaculty } from '../models/uk-faculty.model';
+import { createFormGroupState, FormGroupState, formGroupReducer, updateGroup, validate, Boxed, box } from 'ngrx-forms';
+import { required, pattern, equalTo } from 'ngrx-forms/validation';
+import { Activity } from '../shared/models/activity.model';
+import { Skill } from '../shared/models/skill.model';
+import { Faculty } from '../shared/models/faculty.model';
 
 export interface State extends fromRoot.AppState {
   forms: FormState;
@@ -39,7 +40,7 @@ const initialHelpFinanciallyFormState = createFormGroupState<HelpFinanciallyForm
 export interface HelpWithActivityFormValue {
   nameSurname: string;
   birthDate: string;
-  faculty: UKFaculty;
+  faculty: Boxed<Faculty>;
 
   permanentStreetAddress: string;
   permanentZipCode: string;
@@ -49,7 +50,7 @@ export interface HelpWithActivityFormValue {
   activityCity: string;
   activityCountry: string;
 
-  helpActivity: HelpActivity;
+  skills: Boxed<Skill[]>;
   readyToHelpStartDate: string;
   readyToHelpEndDate: string;
 
@@ -60,16 +61,26 @@ export interface HelpWithActivityFormValue {
 }
 
 const validateHelpWithActivityForm = updateGroup<HelpWithActivityFormValue>({
+  nameSurname: validate(required),
   birthDate: validate(required),
+  faculty: validate(required),
+
+  permanentStreetAddress: validate(required),
+  permanentZipCode: validate(required),
+  permanentCity: validate(required),
+  permanentCountry: validate(required),
 
   activityCity: validate(required),
   activityCountry: validate(required),
 
+  skills: validate(required),
   readyToHelpStartDate: validate(required),
   readyToHelpEndDate: validate(required),
 
   email: validate(required, pattern(RegExp('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$'))),
   phoneNumber: validate(required, pattern(RegExp('^\\+?[0-9 ]+$'))),
+
+  hasProtectiveItems: validate(required, equalTo(true)),
 });
 
 const HelpWithActivityFormID = 'HelpWithActivityForm';
@@ -88,7 +99,7 @@ const initialHelpWithActivityFormState = createFormGroupState<HelpWithActivityFo
     activityCity: '',
     activityCountry: '',
 
-    helpActivity: null,
+    skills: box([]),
     readyToHelpStartDate: '',
     readyToHelpEndDate: '',
 
@@ -108,7 +119,7 @@ export interface HelpRequestFormValue {
   residentialZipCode: string;
   residentialCity: string;
   residentialCountry: string;
-  helpActivity: HelpActivity;
+  helpActivity: Activity;
 }
 
 const validateHelpRequestForm = updateGroup<HelpRequestFormValue>({
@@ -183,7 +194,7 @@ export function formReducer(state: FormState = initialState, action: FormActions
   }
 
   switch (action.type) {
-    case FormActionTypes.ChangeContentType:
+    case FormActionTypes.changeContentType:
       return {
         ...state,
         contentType: action.payload
@@ -196,7 +207,7 @@ export function formReducer(state: FormState = initialState, action: FormActions
     //     helpFinanciallyForm: { ... state.helpFinanciallyForm, phoneNumber: action.payload?.phoneNumber?.internationalNumber }
     //   };
 
-    case FormActionTypes.ResetState:
+    case FormActionTypes.resetState:
       return Object.assign({}, initialState);
 
     default:
