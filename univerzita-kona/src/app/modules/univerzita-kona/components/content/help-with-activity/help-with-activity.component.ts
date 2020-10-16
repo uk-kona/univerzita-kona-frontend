@@ -5,7 +5,7 @@ import { HelpWithActivityFormValue, State } from '../../../state/form.reducer';
 import { Store } from '@ngrx/store';
 import { map, take } from 'rxjs/operators';
 import { Skill } from '../../../shared/models/skill.model';
-import { UKFaculty } from '../../../shared/models/uk-faculty.model';
+import { Faculty } from '../../../shared/models/faculty.model';
 import { GeneralService } from '../../../shared/services/general.service';
 import { MockedService } from '../../../shared/services/mocked.serice';
 import { HelpWIthActivityMapper } from '../../../shared/mappers/help-with-activity.mapper';
@@ -21,7 +21,7 @@ export class HelpWithActivityComponent implements OnInit {
 
   formState$: Observable<FormGroupState<HelpWithActivityFormValue>>;
   skills$: Observable<Skill[]>;
-  faculties$: Observable<UKFaculty[]>;
+  faculties$: Observable<Faculty[]>;
 
   constructor(
     private store: Store<State>,

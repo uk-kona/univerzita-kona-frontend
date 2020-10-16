@@ -1,10 +1,10 @@
 import { Skill } from './skill.model';
-import { UKFaculty } from './uk-faculty.model';
+import { Faculty } from './faculty.model';
 
 export interface HelpWithActivityResponse {
   nameSurname: string;
   birthDate: string;
-  faculty: UKFaculty;
+  faculty: Faculty;
 
   permanentStreetAddress: string;
   permanentZipCode: string;

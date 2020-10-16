@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { HelpRequestFormValue, State } from '../../../state/form.reducer';
 import { FormGroupState } from 'ngrx-forms';
 import { Observable } from 'rxjs';
-import { HelpActivity } from '../../../shared/models/help-activity.model';
+import { Activity } from '../../../shared/models/activity.model';
 import { MockedService } from '../../../shared/services/mocked.serice';
 
 @Component({
@@ -14,7 +14,7 @@ import { MockedService } from '../../../shared/services/mocked.serice';
 export class HelpRequestComponent implements OnInit {
 
   formState$: Observable<FormGroupState<HelpRequestFormValue>>;
-  helpActivities$: Observable<HelpActivity[]>;
+  helpActivities$: Observable<Activity[]>;
 
   constructor(
     private store: Store<State>,

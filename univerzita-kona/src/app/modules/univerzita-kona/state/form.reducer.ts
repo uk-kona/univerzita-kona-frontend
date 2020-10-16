@@ -4,9 +4,9 @@ import { FormActions, FormActionTypes } from './form.actions';
 import { createFormGroupState, FormGroupState, formGroupReducer, updateGroup, validate, Boxed, box } from 'ngrx-forms';
 import { required, pattern, number, equalTo } from 'ngrx-forms/validation';
 import { Validators } from '@angular/forms';
-import { HelpActivity } from '../shared/models/help-activity.model';
+import { Activity } from '../shared/models/activity.model';
 import { Skill } from '../shared/models/skill.model';
-import { UKFaculty } from '../shared/models/uk-faculty.model';
+import { Faculty } from '../shared/models/faculty.model';
 
 export interface State extends fromRoot.AppState {
   forms: FormState;
@@ -41,7 +41,7 @@ const initialHelpFinanciallyFormState = createFormGroupState<HelpFinanciallyForm
 export interface HelpWithActivityFormValue {
   nameSurname: string;
   birthDate: string;
-  faculty: Boxed<UKFaculty>;
+  faculty: Boxed<Faculty>;
 
   permanentStreetAddress: string;
   permanentZipCode: string;
@@ -120,7 +120,7 @@ export interface HelpRequestFormValue {
   residentialZipCode: string;
   residentialCity: string;
   residentialCountry: string;
-  helpActivity: HelpActivity;
+  helpActivity: Activity;
 }
 
 const validateHelpRequestForm = updateGroup<HelpRequestFormValue>({
