@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HelpWithActivityFormValue } from '../../state/form.reducer';
+import { HelpFinanciallyFormValue, HelpRequestFormValue, HelpWithActivityFormValue } from '../../state/form.reducer';
+import { HelpFinanciallyResponse } from '../models/help-financially-response.model';
+import { HelpRequestResponse } from '../models/help-request-response.model';
 import { HelpWithActivityResponse } from '../models/help-with-activity-response.model';
 
 @Injectable()
@@ -28,5 +30,25 @@ export class HelpWithActivityMapper {
 
             hasProtectiveItems: input.hasProtectiveItems,
         } as HelpWithActivityResponse;
+    }
+
+    public mapToHelpRequestResponse(input: HelpRequestFormValue): HelpRequestResponse {
+        return {
+            nameSurname: input.nameSurname,
+            email: input.email,
+            phoneNumber: input.phoneNumber,
+            residentialStreetAddress: input.residentialStreetAddress,
+            residentialZipCode: input.residentialZipCode,
+            residentialCity: input.residentialCity,
+            residentialCountry: input.residentialCountry,
+            helpActivity: input.helpActivity.value,
+        } as HelpRequestResponse;
+    }
+
+    public mapToHelpFinanciallyResponse(input: HelpFinanciallyFormValue): HelpFinanciallyResponse {
+        return {
+            areSpecialConditions: input.areSpecialConditions,
+            specialConditions: input.areSpecialConditions ? input.specialConditions : null,
+        } as HelpFinanciallyResponse;
     }
 }

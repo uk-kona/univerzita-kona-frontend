@@ -119,7 +119,7 @@ export interface HelpRequestFormValue {
   residentialZipCode: string;
   residentialCity: string;
   residentialCountry: string;
-  helpActivity: Activity;
+  helpActivity: Boxed<Activity>;
 }
 
 const validateHelpRequestForm = updateGroup<HelpRequestFormValue>({

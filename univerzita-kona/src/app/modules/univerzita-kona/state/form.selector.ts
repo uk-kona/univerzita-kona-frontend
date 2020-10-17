@@ -10,6 +10,17 @@ export const getContentType = createSelector(
   state => state.contentType,
 );
 
+export const getHelpRequestForm = createSelector(
+  getFormFeatureName,
+  state => state.helpRequestForm.value
+);
+
 export const getHelpWithActivityForm = createSelector(
   getFormFeatureName,
-  state => state.helpWithActivityForm.value);
+  state => state.helpWithActivityForm.value
+);
+
+export const getHelpFinanciallyForm = createSelector(
+  getFormFeatureName,
+  state => state.helpFinanciallyForm.value
+);
