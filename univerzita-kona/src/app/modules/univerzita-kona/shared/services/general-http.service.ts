@@ -45,7 +45,7 @@ export class GeneralHttpService {
         return this.httpClient.post<Response>(`${BASE_URL}/need-help`, snakeize(response));
     }
 
-    
+
     postHelpWithActivityResponse(response: HelpWithActivityResponse): Observable<Response> {
         return this.httpClient.post<Response>(`${BASE_URL}/help-with-activity`, snakeize(response));
     }
@@ -62,5 +62,4 @@ export class GeneralHttpService {
         return this.httpClient.post<Response>(`${BASE_URL}/help-financially`, snakeize(response));
     }
 
-    
 }
