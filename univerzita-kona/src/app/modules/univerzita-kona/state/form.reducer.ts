@@ -79,8 +79,6 @@ const validateHelpWithActivityForm = updateGroup<HelpWithActivityFormValue>({
 
   email: validate(required, pattern(RegExp('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}$'))),
   phoneNumber: validate(required, pattern(RegExp('^\\+?[0-9 ]+$'))),
-
-  hasProtectiveItems: validate(required, equalTo(true)),
 });
 
 const HelpWithActivityFormID = 'HelpWithActivityForm';
