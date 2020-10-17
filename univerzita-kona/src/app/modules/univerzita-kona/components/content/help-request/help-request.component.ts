@@ -5,6 +5,7 @@ import { FormGroupState } from 'ngrx-forms';
 import { Observable } from 'rxjs';
 import { Activity } from '../../../shared/models/activity.model';
 import { MockedService } from '../../../shared/services/mocked.serice';
+import * as fromActions from '../../../state/form.actions';
 
 @Component({
   selector: 'app-help-request',
@@ -27,7 +28,7 @@ export class HelpRequestComponent implements OnInit {
   }
 
   onSubmit(): void {
-    console.log('SUBMIT');
+    this.store.dispatch(new fromActions.SubmitHelpRequestForm());
   }
 
 }

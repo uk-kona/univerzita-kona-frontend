@@ -1,12 +1,13 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { EMPTY, Observable } from 'rxjs';
 import { HelpWithActivityResponse } from '../models/help-with-activity-response.model';
 import { NeedHelpResource } from '../models/need-help-resource.model';
 import { PaymentResource } from '../models/payment-resource.model';
 import { Faculty } from '../models/faculty.model';
 import { Activity } from '../models/activity.model';
 import { Skill } from '../models/skill.model';
+import { HelpRequestResponse } from '../models/help-request-response.model';
 
 const BASE_URL = 'http://127.0.0.1:5000/api/v1';
 
@@ -32,11 +33,23 @@ export class GeneralHttpService {
         return this.httpClient.get<PaymentResource>(`${BASE_URL}/help-financially`);
     }
 
+    postHelpRequestResponse(response: HelpRequestResponse): Observable<Response> {
+        return this.httpClient.post<Response>(`${BASE_URL}/need-help`, response);
+    }
+
     postHelpWithActivityResponse(response: HelpWithActivityResponse): Observable<Response> {
         return this.httpClient.post<Response>(`${BASE_URL}/help-with-activity`, response);
     }
 
-    getNeedHelpResource(): Observable<NeedHelpResource> {
-        return this.httpClient.get<PaymentResource>(`${BASE_URL}/need-help`);
+    getHelpFinanciallyResource(): Observable<any> {
+        return EMPTY;
+        // TODO implement
     }
+
+    postHelpFinanciallyResource(response: any): Observable<any> {
+        return EMPTY;
+        // TODO implement
+    }
+
+    
 }

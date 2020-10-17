@@ -1,6 +1,6 @@
 <h2>{{ 'APP.UNIVERZITA-KONA.NAV.HELP-REQUEST' | translate }}</h2>
 
-<form [ngrxFormState]="(formState$ | async)" (ngSubmit)="onSubmit()">
+<form [ngrxFormState]="(formState$ | async)">
 
   <div>
     <label for="name-surname">
@@ -101,6 +101,6 @@
 
   </fieldset>
 
-  <button type="submit" [disabled]="!(formState$ | async).isValid">{{'APP.UNIVERZITA-KONA.CONTENT.FORM.SUBMIT' | translate}}</button>
+  <button type="submit" [disabled]="!(formState$ | async).isValid" (click)=onSubmit()>{{ 'APP.UNIVERZITA-KONA.CONTENT.FORM.SUBMIT' | translate }}</button>
 
 </form>

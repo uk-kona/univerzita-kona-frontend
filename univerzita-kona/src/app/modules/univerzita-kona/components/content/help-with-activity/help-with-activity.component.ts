@@ -5,9 +5,7 @@ import { HelpWithActivityFormValue, State } from '../../../state/form.reducer';
 import { Store } from '@ngrx/store';
 import { Skill } from '../../../shared/models/skill.model';
 import { Faculty } from '../../../shared/models/faculty.model';
-import { GeneralHttpService } from '../../../shared/services/general-http.service';
 import { MockedService } from '../../../shared/services/mocked.serice';
-import { HelpWithActivityMapper } from '../../../shared/mappers/help-with-activity.mapper';
 import * as fromActions from '../../../state/form.actions';
 
 @Component({
@@ -24,8 +22,6 @@ export class HelpWithActivityComponent implements OnInit {
   constructor(
     private store: Store<State>,
     private mockedService: MockedService,
-    private generalService: GeneralHttpService,
-    private mapper: HelpWithActivityMapper,
   ) {}
 
   ngOnInit(): void {
