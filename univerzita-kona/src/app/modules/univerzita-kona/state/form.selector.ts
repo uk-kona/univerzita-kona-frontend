@@ -19,3 +19,8 @@ export const getHelpWithActivityForm = createSelector(
   getFormFeatureName,
   state => state.helpWithActivityForm.value
 );
+
+export const getHelpFinanciallyForm = createSelector(
+  getFormFeatureName,
+  state => state.helpFinanciallyForm.value
+);

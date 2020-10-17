@@ -1,6 +1,6 @@
 <h2>{{ 'APP.UNIVERZITA-KONA.NAV.HELP-FINANCIALLY' | translate }}</h2>
 
-<form [ngrxFormState]="(formState$ | async)" (ngSubmit)="onSubmit()">
+<form [ngrxFormState]="(formState$ | async)">
 
   <label for="areSpecialConditions">
     <input id="areSpecialConditions" type="checkbox" [ngrxFormControlState]="(formState$ | async).controls.areSpecialConditions">

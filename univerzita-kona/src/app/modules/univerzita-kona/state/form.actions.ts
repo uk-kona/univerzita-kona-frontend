@@ -10,6 +10,9 @@ export enum FormActionTypes {
 
   submitHelpWithActivityForm = '[Form] [Help with activity] Submit',
   submittedHelpWithActivityForm = '[Form] [Help with activity] Submitted',
+
+  submitHelpFinanciallyForm = '[Form] [Help financially] Submit',
+  submittedHelpFinanciallyForm = '[Form] [Help financially] Submitted',
 }
 
 export class ChangeContentType implements Action {
@@ -48,10 +51,24 @@ export class SubmittedHelpWithActivityForm implements Action {
   constructor() {}
 }
 
+export class SubmitHelpFinanciallyForm implements Action {
+  readonly type = FormActionTypes.submitHelpFinanciallyForm;
+
+  constructor() {}
+}
+
+export class SubmittedHelpFinanciallyForm implements Action {
+  readonly type = FormActionTypes.submittedHelpFinanciallyForm;
+
+  constructor() {}
+}
+
 export type FormActions = 
   ChangeContentType | 
   ResetState | 
   SubmitHelpRequestForm |
   SubmittedHelpRequestForm |
   SubmitHelpWithActivityForm |
-  SubmittedHelpWithActivityForm;
+  SubmittedHelpWithActivityForm |
+  SubmitHelpFinanciallyForm |
+  SubmittedHelpFinanciallyForm;

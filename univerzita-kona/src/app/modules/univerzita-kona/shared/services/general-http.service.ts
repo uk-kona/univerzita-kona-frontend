@@ -40,29 +40,26 @@ export class GeneralHttpService {
             );
     }
 
-    getPaymentResource(): Observable<PaymentResource> {
-        return this.httpClient.get<PaymentResource>(`${BASE_URL}/help-financially`)
-            .pipe(
-                map((d) => camelize(d)),
-            );
-    }
 
     postHelpRequestResponse(response: HelpRequestResponse): Observable<Response> {
         return this.httpClient.post<Response>(`${BASE_URL}/need-help`, snakeize(response));
     }
 
+    
     postHelpWithActivityResponse(response: HelpWithActivityResponse): Observable<Response> {
         return this.httpClient.post<Response>(`${BASE_URL}/help-with-activity`, snakeize(response));
     }
 
-    getHelpFinanciallyResource(): Observable<any> {
-        return EMPTY;
-        // TODO implement
+
+    getHelpFinanciallyResource(): Observable<Response> {
+        return this.httpClient.get<PaymentResource>(`${BASE_URL}/help-financially`)
+            .pipe(
+                map((d) => camelize(d)),
+            ); 
     }
 
     postHelpFinanciallyResource(response: any): Observable<any> {
-        return EMPTY;
-        // TODO implement
+        return this.httpClient.post<Response>(`${BASE_URL}/help-financially`, snakeize(response));
     }
 
     

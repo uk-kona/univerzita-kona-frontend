@@ -5,12 +5,13 @@ import { Observable, of } from 'rxjs';
 import { catchError, exhaustMap, map, withLatestFrom } from 'rxjs/operators';
 import { HelpWithActivityMapper } from '../shared/mappers/help-with-activity.mapper';
 import { FormStoreFacadeService } from '../shared/services/form-store-facade.service';
-import { FormActionTypes, SubmittedHelpRequestForm, SubmittedHelpWithActivityForm } from './form.actions';
-import { HelpRequestFormValue, HelpWithActivityFormValue } from './form.reducer';
+import { FormActionTypes, SubmittedHelpFinanciallyForm, SubmittedHelpRequestForm, SubmittedHelpWithActivityForm } from './form.actions';
+import { HelpFinanciallyFormValue, HelpRequestFormValue, HelpWithActivityFormValue } from './form.reducer';
 import { ThrowTempAction } from './error.actions';
 import { GeneralHttpService } from '../shared/services/general-http.service';
 import { HelpRequestResponse } from '../shared/models/help-request-response.model';
 import { HelpWithActivityResponse } from '../shared/models/help-with-activity-response.model';
+import { HelpFinanciallyResponse } from '../shared/models/help-financially-response.model';
 
 @Injectable()
 export class FormEffects {
@@ -55,6 +56,30 @@ export class FormEffects {
                 .pipe(
                     map(
                         () => new SubmittedHelpWithActivityForm(),
+                        // TODO handle success
+                    ),
+                    catchError(
+                        () => of(new ThrowTempAction()),
+                        // TODO handle failure
+                    )
+                );
+        })
+    );
+
+    @Effect()
+    submitHelpFinanciallyForm$: Observable<Action> = this.actions$.pipe(
+        ofType(FormActionTypes.submitHelpFinanciallyForm),
+        withLatestFrom(
+            this.formStoreFacadeService.formValue.getHelpFinanciallyFormValue$,
+            (_, formValue: HelpFinanciallyFormValue): HelpFinanciallyFormValue => formValue,
+        ),
+        exhaustMap((formValue: HelpFinanciallyFormValue) => {
+            const response: HelpFinanciallyResponse = this.helpWithActivityMapper.mapToHelpFinanciallyResponse(formValue)
+            return this.generalHttpService
+                .postHelpFinanciallyResource(response)
+                .pipe(
+                    map(
+                        () => new SubmittedHelpFinanciallyForm(),
                         // TODO handle success
                     ),
                     catchError(
