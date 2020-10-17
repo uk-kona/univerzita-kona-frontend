@@ -48,7 +48,7 @@ export class HelpWithActivityMapper {
     public mapToHelpFinanciallyResponse(input: HelpFinanciallyFormValue): HelpFinanciallyResponse {
         return {
             areSpecialConditions: input.areSpecialConditions,
-            specialConditions: input.specialConditions,
+            specialConditions: input.areSpecialConditions ? input.specialConditions : null,
         } as HelpFinanciallyResponse;
     }
 }
